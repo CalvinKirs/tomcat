@@ -56,6 +56,13 @@ jobs:
       with:
         java-version: ${{ matrix.java }}
         distribution: zulu
+    - name: Cache Ant build
+      uses: actions/cache@v3
+      with:
+        path: ~/.ant/cache
+        key: ${{ runner.os }}-ant-${{ hashFiles('**/build.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-ant-        
     - name: Build
       run: |
         ant -noinput echoproperties deploy embed test-nio test-status
