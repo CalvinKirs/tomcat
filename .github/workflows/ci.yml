@@ -59,7 +59,7 @@ jobs:
     - name: Cache Ant build
       uses: actions/cache@v3
       with:
-        path: ~/.ant/cache
+        path: output/build
         key: ${{ runner.os }}-ant-${{ hashFiles('**/build.xml') }}
         restore-keys: |
           ${{ runner.os }}-ant-        
